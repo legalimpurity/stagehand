@@ -223,7 +223,7 @@ export class TestCodeGenerator {
       return await convertPlaywrightCodeToFramework(
         playwrightCode,
         testFramework,
-        this.llmProvider.getClient("gpt-4o"),
+        this.llmProvider.getClient("gpt-4.1"),
         Math.random().toString(36).substring(2),
         this.logger,
       );

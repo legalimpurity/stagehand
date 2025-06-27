@@ -34,7 +34,7 @@ import { StagehandContext } from "./StagehandContext";
 
 dotenv.config({ path: ".env" });
 
-const DEFAULT_MODEL_NAME = "gpt-4o";
+const DEFAULT_MODEL_NAME = "gpt-4.1";
 const BROWSERBASE_REGION_DOMAIN = {
   "us-west-2": "wss://connect.usw2.browserbase.com",
   "us-east-1": "wss://connect.use1.browserbase.com",
@@ -308,7 +308,7 @@ const defaultLogger = async (logLine: LogLine) => {
 };
 
 export class Stagehand {
-  private stagehandPage!: StagehandPage;
+  private stagehandPage: StagehandPage | null = null;
   private stagehandContext!: StagehandContext;
   private intEnv: "LOCAL" | "BROWSERBASE";
 
