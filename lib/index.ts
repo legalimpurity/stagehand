@@ -631,6 +631,10 @@ export class Stagehand {
   ): Promise<DumpRecordedActionsCodeResult> {
     return await this.stagehandPage.dumpRecordedActionsCode(options);
   }
+
+  async getRecordedActions() {
+    return await this.stagehandPage.getRecordedActions();
+  }
 }
 
 export * from "../types/browser";
@@ -640,3 +644,4 @@ export * from "../types/playwright";
 export * from "../types/stagehand";
 export * from "../types/page";
 export * from "./llm/LLMClient";
+export { ActionRecorderEntry } from "./cache/ActionRecorder";

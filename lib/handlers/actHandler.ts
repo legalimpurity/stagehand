@@ -5,7 +5,7 @@ import {
   PlaywrightCommandMethodNotSupportedException,
 } from "../../types/playwright";
 import { ActionCache } from "../cache/ActionCache";
-import { ActionRecorder } from "../cache/ActionRecorder";
+import { ActionRecorder, ActionRecorderEntry } from "../cache/ActionRecorder";
 import { act, fillInVariables, verifyActCompletion } from "../inference";
 import { LLMClient } from "../llm/LLMClient";
 import { LLMProvider } from "../llm/LLMProvider";
@@ -1602,5 +1602,12 @@ export class StagehandActHandler {
       options.testFramework,
     );
     return { code };
+  }
+
+  public async getRecordedActions(): Promise<ActionRecorderEntry[]> {
+    if (!this.actionRecorder) {
+      return [];
+    }
+    return await this.actionRecorder.getAllActions();
   }
 }

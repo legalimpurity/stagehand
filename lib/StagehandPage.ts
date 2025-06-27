@@ -19,6 +19,7 @@ import {
 import { z } from "zod";
 import { StagehandExtractHandler } from "./handlers/extractHandler";
 import { StagehandObserveHandler } from "./handlers/observeHandler";
+import { ActionRecorderEntry } from "./cache/ActionRecorder";
 
 export class StagehandPage {
   private stagehand: Stagehand;
@@ -372,6 +373,13 @@ export class StagehandPage {
     }
 
     return this.actHandler.dumpRecordedActionsCode(options);
+  }
+
+  async getRecordedActions(): Promise<ActionRecorderEntry[]> {
+    if (!this.actHandler) {
+      throw new Error("Act handler not initialized");
+    }
+    return this.actHandler.getRecordedActions();
   }
 
   async extract<T extends z.AnyZodObject>({
