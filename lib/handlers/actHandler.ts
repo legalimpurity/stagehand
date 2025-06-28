@@ -1608,6 +1608,6 @@ export class StagehandActHandler {
     if (!this.actionRecorder) {
       return [];
     }
-    return await this.actionRecorder.getAllActions();
+    return this.actionRecorder.getAllActions();
   }
 }
